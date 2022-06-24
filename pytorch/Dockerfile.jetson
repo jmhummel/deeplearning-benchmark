@@ -3,6 +3,5 @@ FROM nvcr.io/nvidia/pytorch:21.07-py3
 
 FROM nvcr.io/nvidia/l4t-pytorch:r34.1.1-pth1.12-py3
 COPY tegrastats /bin/tegrastats
-RUN pip3 install --no-cache-dir --verbose numpy
 WORKDIR /workspace
 COPY --from=0 /workspace/examples /workspace/examples
