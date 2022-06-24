@@ -3,5 +3,6 @@ FROM nvcr.io/nvidia/pytorch:21.07-py3
 
 FROM nvcr.io/nvidia/l4t-pytorch:r34.1.1-pth1.12-py3
 COPY tegrastats /bin/tegrastats
+RUN ln -s /usr/bin/python3 /usr/bin/python
 WORKDIR /workspace
 COPY --from=0 /workspace/examples /workspace/examples
