@@ -42,7 +42,7 @@ benchmark_pytorch_ssd() {
     TASK_PARAMS=${task}_PARAMS[@]
     local command_para=$(sed 's/.*args //' <<<${!TASK_PARAMS})
 
-    python -m torch.distributed.launch --nproc_per_node=${NUM_GPU} main.py \
+    python3 -m torch.distributed.launch --nproc_per_node=${NUM_GPU} main.py \
     --mode benchmark-training ${command_para} |& tee ${result}  
     echo "DONE!" >> ${result}
 }
@@ -56,7 +56,7 @@ benchmark_pytorch_resnet50() {
     TASK_PARAMS=${task}_PARAMS[@]
     local command_para=$(sed 's/.*args //' <<<${!TASK_PARAMS})
 
-    python ./multiproc.py --nproc_per_node ${NUM_GPU} ./main.py \
+    python3 ./multiproc.py --nproc_per_node ${NUM_GPU} ./main.py \
     ${command_para} |& tee ${result}   
     echo "DONE!" >> ${result}
 }
@@ -72,7 +72,7 @@ benchmark_pytorch_maskrcnn() {
 
     GLOBAL_BATCH=`echo ${!TASK_PARAMS} | grep -oP '(?<=SOLVER.IMS_PER_BATCH )\w+'`
 
-    python -m torch.distributed.launch --nproc_per_node=${NUM_GPU} tools/train_net.py \
+    python3 -m torch.distributed.launch --nproc_per_node=${NUM_GPU} tools/train_net.py \
     --skip-test \
     ${command_para} \
     | tee $result
@@ -110,7 +110,7 @@ benchmark_pytorch_ncf() {
     TASK_PARAMS=${task}_PARAMS[@]
     local command_para=$(sed 's/.*args //' <<<${!TASK_PARAMS})
 
-    python -m torch.distributed.launch --nproc_per_node=${NUM_GPU} ncf.py ${command_para} |& tee ${result}
+    python3 -m torch.distributed.launch --nproc_per_node=${NUM_GPU} ncf.py ${command_para} |& tee ${result}
     echo "DONE!" >> ${result}
 }
 
@@ -123,7 +123,7 @@ benchmark_pytorch_transformerxl() {
     TASK_PARAMS=${task}_PARAMS[@]
     local command_para=$(sed 's/.*args //' <<<${!TASK_PARAMS})
 
-    python -m torch.distributed.launch --nproc_per_node=${NUM_GPU} train.py ${command_para} |& tee ${result}
+    python3 -m torch.distributed.launch --nproc_per_node=${NUM_GPU} train.py ${command_para} |& tee ${result}
     echo "DONE!" >> ${result}
 }
 
@@ -136,7 +136,7 @@ benchmark_pytorch_tacotron2() {
     TASK_PARAMS=${task}_PARAMS[@]
     local command_para=$(sed 's/.*args //' <<<${!TASK_PARAMS})
 
-    python -m multiproc ${NUM_GPU} train.py \
+    python3 -m multiproc ${NUM_GPU} train.py \
     ${command_para}  |& tee ${result}
     echo "DONE!" >> ${result}
 }
