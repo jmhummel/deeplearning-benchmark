@@ -25,7 +25,7 @@ MB="$(cat /sys/devices/virtual/dmi/id/board_{vendor,name,version} | tr '\n' ' ')
 
 PLATFORM_NAME="$(cat /etc/os-release | grep "PRETTY_NAME=" | cut -c 14- | rev | cut -c 2- | rev)"
 
-PT_VERSION="$(python -c "import torch; print(torch.__version__)" | awk '{ print $NF }')"
+PT_VERSION="$(python3 -c "import torch; print(torch.__version__)" | awk '{ print $NF }')"
 
 RESULTS_PATH=/results/${SYSTEM}
 mkdir -p $RESULTS_PATH
