@@ -187,7 +187,8 @@ benchmark_pytorch() {
 	    if [ "$last_line" == "DONE!" ]; then
 	        flag_monitor=false
 	    else
-	        status="$(nvidia-smi --query-gpu=temperature.gpu,utilization.gpu,memory.used --format=csv | tail -1)"
+#	        status="$(nvidia-smi --query-gpu=temperature.gpu,utilization.gpu,memory.used --format=csv | tail -1)"
+	        status="$(tegrastats | head -1)"
 		echo "${status}" >> $file_monitor
             fi
 	    sleep $MONITOR_INTERVAL
