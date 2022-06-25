@@ -11,14 +11,14 @@ cp /scripts/patch/multiproc.py examples/tacotron2
 # cp /scripts/patch/box_encoder_cuda.cu examples/ssd/csrc
 
 
-if [[ "${TASK_NAME}" == *"ssd"* ]] || [ $TASK_NAME = "all" ] || [[ "${TASK_NAME}" == *"maskrcnn"* ]]; then
-	pushd .
-	cd examples/ssd
-	pip install -r requirements.txt
-	popd
-fi
+#if [[ "${TASK_NAME}" == *"ssd"* ]] || [ $TASK_NAME = "all" ] || [[ "${TASK_NAME}" == *"maskrcnn"* ]]; then
+#	pushd .
+#	cd examples/ssd
+#	pip install -r requirements.txt
+#	popd
+#fi
 
-#./run_system_pytorch_jetson.sh $SYSTEM
+./run_system_pytorch_jetson.sh $SYSTEM
 #
 #./run_benchmark_pytorch.sh $SYSTEM $TASK_NAME
 
