@@ -16,6 +16,9 @@ if [[ "${TASK_NAME}" == *"ssd"* ]] || [ $TASK_NAME = "all" ] || [[ "${TASK_NAME}
 	cd examples/ssd
 	pip install -r requirements.txt
 	popd
+	pushd examples/maskrcnn/pytorch
+	pip install -r requirements.txt
+	popd
 fi
 
 ./run_system_pytorch_jetson.sh $SYSTEM
