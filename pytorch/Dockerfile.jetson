@@ -5,5 +5,7 @@ FROM nvcr.io/nvidia/l4t-pytorch:r34.1.1-pth1.12-py3
 COPY tegrastats /bin/tegrastats
 RUN rm /usr/bin/python
 RUN ln -s /usr/bin/python3 /usr/bin/python
+RUN pip install Cython==0.28.4
+RUN pip install scikit-image==0.15.0
 WORKDIR /workspace
 COPY --from=0 /workspace/examples /workspace/examples
