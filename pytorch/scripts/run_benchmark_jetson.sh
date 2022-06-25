@@ -19,6 +19,6 @@ if [[ "${TASK_NAME}" == *"ssd"* ]] || [ $TASK_NAME = "all" ] || [[ "${TASK_NAME}
 fi
 
 ./run_system_pytorch_jetson.sh $SYSTEM
-#
-#./run_benchmark_pytorch.sh $SYSTEM $TASK_NAME
+
+./run_benchmark_pytorch.sh $SYSTEM $TASK_NAME
 
