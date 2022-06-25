@@ -10,3 +10,7 @@ RUN pip install scikit-image==0.15.0
 WORKDIR /workspace
 COPY --from=0 /workspace/examples /workspace/examples
 RUN mkdir /results
+RUN git clone https://github.com/NVIDIA/apex
+WORKDIR /workspace/apex
+RUN pip install -v --disable-pip-version-check --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./
+WORKDIR /workspace
