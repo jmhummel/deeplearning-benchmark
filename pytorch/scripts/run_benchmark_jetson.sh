@@ -23,4 +23,3 @@ fi
 ./run_system_pytorch_jetson.sh $SYSTEM
 
 ./run_benchmark_pytorch.sh $SYSTEM $TASK_NAME
-
