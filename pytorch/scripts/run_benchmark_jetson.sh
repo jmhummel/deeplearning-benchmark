@@ -12,8 +12,7 @@ cp /scripts/patch/multiproc.py examples/tacotron2
 
 
 if [[ "${TASK_NAME}" == *"ssd"* ]] || [ $TASK_NAME = "all" ] || [[ "${TASK_NAME}" == *"maskrcnn"* ]]; then
-	pushd .
-	cd examples/ssd
+	pushd examples/ssd
 	pip install -r requirements.txt
 	popd
 	pushd examples/maskrcnn/pytorch
